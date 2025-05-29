@@ -79,8 +79,10 @@ class VortexDataset(Dataset):
             indices = train_idx
         elif self.split == 'val':
             indices = val_idx
-        else:  # test
+        elif self.split == 'test':  # test
             indices = test_idx
+        else:
+            indices = len(all_features)
         
         # Store selected samples
         self.data_list = [all_features[i] for i in indices]

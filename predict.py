@@ -100,7 +100,7 @@ def main():
     logger.info(f'已加载ONNX模型: {model_path}')
     
     # 准备数据
-    predict_dataset = VortexDataset(data_dir, split='test', input_length=input_length)
+    predict_dataset = VortexDataset(data_dir, input_length=input_length)
     predict_loader = DataLoader(predict_dataset, batch_size=batch_size, shuffle=False)
     
     logger.info(f'预测样本数: {len(predict_dataset)}')
