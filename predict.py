@@ -62,12 +62,9 @@ def predict_batch(session, data_loader):
     all_preds = []
     all_probs = []
     all_inputs = []
-    all_metadata = []  # Add list to store metadata
-    all_labels = []    # Add list to store true labels
     
-    for batch_idx, (x, y, meta) in enumerate(data_loader): # Modified to unpack meta
+    for batch_idx, (x, y) in enumerate(data_loader):
         x_np = x.numpy().astype(np.float32)
-        y_np = y.numpy() # Get true labels
         
         # ONNX推理
         outputs = session.run(None, {'input': x_np})[0]
@@ -79,13 +76,8 @@ def predict_batch(session, data_loader):
         all_preds.extend(preds)
         all_probs.extend(probs)
         all_inputs.extend(x_np)
-
-        # meta from DataLoader should be a list of dictionaries for the current batch
-        all_metadata.extend(meta) 
-
-        all_labels.extend(y_np)   # Store true labels
     
-    return all_preds, all_probs, all_inputs, all_metadata, all_labels # Return metadata and labels
+    return all_preds, all_probs, all_inputs
 
 def main():
     logger = setup_logging()
@@ -94,7 +86,7 @@ def main():
     input_length = 8  # 输入序列长度
     batch_size = 32
     model_path = 'models/ts_mixer.onnx'
-    data_dir = 'data/data_all_label'  # 预测数据目录
+    data_dir = 'data/test_data'  # 预测数据目录
     output_dir = 'predictions'
     
     logger.info('开始预测:')
@@ -114,7 +106,7 @@ def main():
     logger.info(f'预测样本数: {len(predict_dataset)}')
     
     # 执行预测
-    predictions, probabilities, inputs, metadata, true_labels = predict_batch(session, predict_loader) # Modified to receive metadata and true_labels
+    predictions, probabilities, inputs = predict_batch(session, predict_loader)
     
     # 保存预测结果
     feature_cols = [f'Val{i}_{j}' for i in range(5, 123) for j in range(1, 3)]
@@ -124,18 +116,14 @@ def main():
     for i in range(len(predictions)):
         input_flat = inputs[i].reshape(-1)
         row = {
-            'Year': metadata[i]['Year'], # Add Year from metadata
-            'Month': metadata[i]['Month'], # Add Month from metadata
-            'Day': metadata[i]['Day'],   # Add Day from metadata
-            'TrueLabel': int(true_labels[i]), # Add TrueLabel
+            **{col: input_flat[j] for j, col in enumerate(input_cols) if j < len(input_flat)},
             'prediction': int(predictions[i]),
-            'probability': float(probabilities[i]),
-            **{col: input_flat[j] for j, col in enumerate(input_cols) if j < len(input_flat)}
+            'probability': float(probabilities[i])
         }
         output_data.append(row)
     
     output_df = pd.DataFrame(output_data)
-    output_path = os.path.join(output_dir, 'predictions.csv')
+    output_path = os.path.join(output_dir, 'predictions1.csv')
     output_df.to_csv(output_path, index=False)
     logger.info(f'已保存预测结果到 {output_path}')
     

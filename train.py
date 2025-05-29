@@ -150,7 +150,7 @@ def train():
         train_loss = 0.0
         train_preds, train_labels = [], []
         
-        for x, y,_ in tqdm(train_loader, desc=f'Epoch {epoch+1}/{num_epochs}'):
+        for x, y in tqdm(train_loader, desc=f'Epoch {epoch+1}/{num_epochs}'):
             x, y = x.to(device), y.to(device)
             outputs = model(x)
             loss = criterion(outputs, y)
@@ -172,7 +172,7 @@ def train():
         val_loss = 0.0
         val_preds, val_labels = [], []
         with torch.no_grad():
-            for x, y, _ in val_loader:
+            for x, y in val_loader:
                 x, y = x.to(device), y.to(device)
                 outputs = model(x)
                 loss = criterion(outputs, y)

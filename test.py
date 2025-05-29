@@ -89,7 +89,7 @@ def test():
     )
     
     # Inference
-    for batch_idx, (x, y) in enumerate(test_loader):
+    for batch_idx, (x, y, _) in enumerate(test_loader):
         x_np = x.numpy().astype(np.float32)  # ONNX expects float32
         y = y.to(device)
         
