@@ -1,0 +1,522 @@
+2025-05-28 12:36:11,541 - INFO: Starting training with hyperparameters:
+2025-05-28 12:36:11,541 - INFO: input_length=8, no_feats=284, batch_size=64, epochs=100
+2025-05-28 12:41:52,076 - INFO: Starting training with hyperparameters:
+2025-05-28 12:41:52,076 - INFO: input_length=8, no_feats=284, batch_size=64, epochs=100
+2025-05-28 12:42:13,184 - INFO: Starting training with hyperparameters:
+2025-05-28 12:42:13,184 - INFO: input_length=8, no_feats=284, batch_size=64, epochs=100
+2025-05-28 12:42:23,788 - INFO: Training samples: 37089
+2025-05-28 12:42:23,789 - INFO: Validation samples: 7948
+2025-05-28 12:42:23,789 - INFO: Test samples: 7948
+2025-05-28 12:42:24,430 - INFO: Positive class weight: 24.7741
+2025-05-28 12:42:24,448 - INFO: Model parameters: 1167614
+2025-05-28 12:42:30,026 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:42:30,027 - INFO: Saved best model with Val F1: 0.1257
+2025-05-28 12:42:30,027 - INFO: Epoch 1: Train Loss: 1.6048, Train Acc: 0.6213, Train F1: 0.1096
+2025-05-28 12:42:30,027 - INFO:            Val Loss: 1.1179, Val Acc: 0.5205, Val F1: 0.1257
+2025-05-28 12:42:35,274 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:42:35,274 - INFO: Saved best model with Val F1: 0.1426
+2025-05-28 12:42:35,274 - INFO: Epoch 2: Train Loss: 1.2837, Train Acc: 0.6945, Train F1: 0.1459
+2025-05-28 12:42:35,274 - INFO:            Val Loss: 1.0449, Val Acc: 0.5703, Val F1: 0.1426
+2025-05-28 12:42:41,636 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:42:41,637 - INFO: Saved best model with Val F1: 0.3441
+2025-05-28 12:42:41,637 - INFO: Epoch 3: Train Loss: 1.0715, Train Acc: 0.7515, Train F1: 0.1828
+2025-05-28 12:42:41,637 - INFO:            Val Loss: 1.1195, Val Acc: 0.9261, Val F1: 0.3441
+2025-05-28 12:42:46,850 - INFO: Epoch 4: Train Loss: 1.0753, Train Acc: 0.7651, Train F1: 0.1945
+2025-05-28 12:42:46,851 - INFO:            Val Loss: 0.8837, Val Acc: 0.7686, Val F1: 0.2204
+2025-05-28 12:42:51,526 - INFO: Epoch 5: Train Loss: 0.9760, Train Acc: 0.7904, Train F1: 0.2220
+2025-05-28 12:42:51,526 - INFO:            Val Loss: 0.8443, Val Acc: 0.7908, Val F1: 0.2437
+2025-05-28 12:42:57,982 - INFO: Epoch 6: Train Loss: 0.9838, Train Acc: 0.8054, Train F1: 0.2402
+2025-05-28 12:42:57,983 - INFO:            Val Loss: 1.5714, Val Acc: 0.3090, Val F1: 0.1003
+2025-05-28 12:43:04,461 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:43:04,462 - INFO: Saved best model with Val F1: 0.4680
+2025-05-28 12:43:04,462 - INFO: Epoch 7: Train Loss: 0.8965, Train Acc: 0.8256, Train F1: 0.2648
+2025-05-28 12:43:04,462 - INFO:            Val Loss: 0.8622, Val Acc: 0.9414, Val F1: 0.4680
+2025-05-28 12:43:13,604 - INFO: Epoch 8: Train Loss: 0.7123, Train Acc: 0.8567, Train F1: 0.3129
+2025-05-28 12:43:13,605 - INFO:            Val Loss: 0.6379, Val Acc: 0.8691, Val F1: 0.3459
+2025-05-28 12:43:22,964 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:43:22,964 - INFO: Saved best model with Val F1: 0.4708
+2025-05-28 12:43:22,965 - INFO: Epoch 9: Train Loss: 0.7522, Train Acc: 0.8525, Train F1: 0.3059
+2025-05-28 12:43:22,965 - INFO:            Val Loss: 0.6512, Val Acc: 0.9293, Val F1: 0.4708
+2025-05-28 12:43:31,227 - INFO: Epoch 10: Train Loss: 0.6683, Train Acc: 0.8704, Train F1: 0.3380
+2025-05-28 12:43:31,227 - INFO:            Val Loss: 0.6632, Val Acc: 0.8816, Val F1: 0.3756
+2025-05-28 12:43:37,950 - INFO: Epoch 11: Train Loss: 0.6524, Train Acc: 0.8796, Train F1: 0.3614
+2025-05-28 12:43:37,950 - INFO:            Val Loss: 0.6252, Val Acc: 0.8480, Val F1: 0.3251
+2025-05-28 12:43:44,312 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:43:44,312 - INFO: Saved best model with Val F1: 0.5504
+2025-05-28 12:43:44,312 - INFO: Epoch 12: Train Loss: 0.5669, Train Acc: 0.8967, Train F1: 0.4019
+2025-05-28 12:43:44,312 - INFO:            Val Loss: 0.6543, Val Acc: 0.9478, Val F1: 0.5504
+2025-05-28 12:43:50,711 - INFO: Epoch 13: Train Loss: 0.5708, Train Acc: 0.9009, Train F1: 0.4138
+2025-05-28 12:43:50,711 - INFO:            Val Loss: 0.5295, Val Acc: 0.8873, Val F1: 0.3938
+2025-05-28 12:43:55,232 - INFO: Epoch 14: Train Loss: 0.4753, Train Acc: 0.9150, Train F1: 0.4555
+2025-05-28 12:43:55,232 - INFO:            Val Loss: 0.6527, Val Acc: 0.8202, Val F1: 0.2929
+2025-05-28 12:44:00,041 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:44:00,041 - INFO: Saved best model with Val F1: 0.6638
+2025-05-28 12:44:00,041 - INFO: Epoch 15: Train Loss: 0.6521, Train Acc: 0.8982, Train F1: 0.4058
+2025-05-28 12:44:00,041 - INFO:            Val Loss: 0.9330, Val Acc: 0.9706, Val F1: 0.6638
+2025-05-28 12:44:04,786 - INFO: Epoch 16: Train Loss: 0.4795, Train Acc: 0.9198, Train F1: 0.4717
+2025-05-28 12:44:04,787 - INFO:            Val Loss: 0.7972, Val Acc: 0.9649, Val F1: 0.6473
+2025-05-28 12:44:09,387 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:44:09,388 - INFO: Saved best model with Val F1: 0.6990
+2025-05-28 12:44:09,388 - INFO: Epoch 17: Train Loss: 0.4152, Train Acc: 0.9296, Train F1: 0.5063
+2025-05-28 12:44:09,388 - INFO:            Val Loss: 0.6399, Val Acc: 0.9727, Val F1: 0.6990
+2025-05-28 12:44:14,070 - INFO: Epoch 18: Train Loss: 0.3848, Train Acc: 0.9328, Train F1: 0.5192
+2025-05-28 12:44:14,070 - INFO:            Val Loss: 0.4402, Val Acc: 0.9547, Val F1: 0.6146
+2025-05-28 12:44:19,628 - INFO: Epoch 19: Train Loss: 0.4156, Train Acc: 0.9349, Train F1: 0.5266
+2025-05-28 12:44:19,629 - INFO:            Val Loss: 1.2990, Val Acc: 0.6583, Val F1: 0.1829
+2025-05-28 12:44:23,920 - INFO: Epoch 20: Train Loss: 0.4534, Train Acc: 0.9268, Train F1: 0.4952
+2025-05-28 12:44:23,920 - INFO:            Val Loss: 0.3638, Val Acc: 0.9318, Val F1: 0.5254
+2025-05-28 12:44:32,827 - INFO: Epoch 21: Train Loss: 0.4098, Train Acc: 0.9386, Train F1: 0.5423
+2025-05-28 12:44:32,828 - INFO:            Val Loss: 0.8691, Val Acc: 0.9460, Val F1: 0.5185
+2025-05-28 12:44:37,389 - INFO: Epoch 22: Train Loss: 0.2908, Train Acc: 0.9518, Train F1: 0.6065
+2025-05-28 12:44:37,389 - INFO:            Val Loss: 0.6185, Val Acc: 0.8591, Val F1: 0.3473
+2025-05-28 12:44:46,603 - INFO: Epoch 23: Train Loss: 0.3536, Train Acc: 0.9454, Train F1: 0.5728
+2025-05-28 12:44:46,603 - INFO:            Val Loss: 0.5370, Val Acc: 0.9355, Val F1: 0.5289
+2025-05-28 12:44:52,873 - INFO: Epoch 24: Train Loss: 0.3149, Train Acc: 0.9489, Train F1: 0.5909
+2025-05-28 12:44:52,873 - INFO:            Val Loss: 0.6805, Val Acc: 0.8547, Val F1: 0.3404
+2025-05-28 12:44:58,967 - INFO: Epoch 25: Train Loss: 0.3787, Train Acc: 0.9451, Train F1: 0.5713
+2025-05-28 12:44:58,967 - INFO:            Val Loss: 0.5646, Val Acc: 0.9560, Val F1: 0.6050
+2025-05-28 12:45:05,674 - INFO: Epoch 26: Train Loss: 0.3807, Train Acc: 0.9460, Train F1: 0.5765
+2025-05-28 12:45:05,675 - INFO:            Val Loss: 0.6867, Val Acc: 0.9687, Val F1: 0.6868
+2025-05-28 12:45:11,736 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:45:11,736 - INFO: Saved best model with Val F1: 0.7242
+2025-05-28 12:45:11,736 - INFO: Epoch 27: Train Loss: 0.2625, Train Acc: 0.9596, Train F1: 0.6482
+2025-05-28 12:45:11,736 - INFO:            Val Loss: 1.1322, Val Acc: 0.9795, Val F1: 0.7242
+2025-05-28 12:45:17,348 - INFO: Epoch 28: Train Loss: 0.3381, Train Acc: 0.9537, Train F1: 0.6155
+2025-05-28 12:45:17,349 - INFO:            Val Loss: 0.3836, Val Acc: 0.9475, Val F1: 0.5867
+2025-05-28 12:45:21,748 - INFO: Epoch 29: Train Loss: 0.2974, Train Acc: 0.9550, Train F1: 0.6220
+2025-05-28 12:45:21,749 - INFO:            Val Loss: 0.8548, Val Acc: 0.9721, Val F1: 0.6925
+2025-05-28 12:45:27,738 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:45:27,738 - INFO: Saved best model with Val F1: 0.7712
+2025-05-28 12:45:27,738 - INFO: Epoch 30: Train Loss: 0.4774, Train Acc: 0.9418, Train F1: 0.5564
+2025-05-28 12:45:27,738 - INFO:            Val Loss: 0.6906, Val Acc: 0.9800, Val F1: 0.7712
+2025-05-28 12:45:32,362 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:45:32,362 - INFO: Saved best model with Val F1: 0.7813
+2025-05-28 12:45:32,362 - INFO: Epoch 31: Train Loss: 0.2610, Train Acc: 0.9632, Train F1: 0.6710
+2025-05-28 12:45:32,362 - INFO:            Val Loss: 0.5780, Val Acc: 0.9811, Val F1: 0.7813
+2025-05-28 12:45:37,210 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:45:37,211 - INFO: Saved best model with Val F1: 0.8235
+2025-05-28 12:45:37,211 - INFO: Epoch 32: Train Loss: 0.2922, Train Acc: 0.9589, Train F1: 0.6436
+2025-05-28 12:45:37,211 - INFO:            Val Loss: 0.7341, Val Acc: 0.9857, Val F1: 0.8235
+2025-05-28 12:45:44,216 - INFO: Epoch 33: Train Loss: 0.2778, Train Acc: 0.9616, Train F1: 0.6608
+2025-05-28 12:45:44,217 - INFO:            Val Loss: 0.9564, Val Acc: 0.9857, Val F1: 0.8131
+2025-05-28 12:45:53,474 - INFO: Epoch 34: Train Loss: 0.1812, Train Acc: 0.9725, Train F1: 0.7333
+2025-05-28 12:45:53,474 - INFO:            Val Loss: 0.3644, Val Acc: 0.9623, Val F1: 0.6637
+2025-05-28 12:46:02,561 - INFO: Epoch 35: Train Loss: 0.1849, Train Acc: 0.9731, Train F1: 0.7377
+2025-05-28 12:46:02,561 - INFO:            Val Loss: 0.5868, Val Acc: 0.9772, Val F1: 0.7577
+2025-05-28 12:46:09,949 - INFO: Epoch 36: Train Loss: 0.3211, Train Acc: 0.9589, Train F1: 0.6454
+2025-05-28 12:46:09,949 - INFO:            Val Loss: 1.0786, Val Acc: 0.9755, Val F1: 0.7250
+2025-05-28 12:46:16,263 - INFO: Epoch 37: Train Loss: 0.3499, Train Acc: 0.9601, Train F1: 0.6514
+2025-05-28 12:46:16,263 - INFO:            Val Loss: 1.1905, Val Acc: 0.9804, Val F1: 0.7451
+2025-05-28 12:46:22,253 - INFO: Epoch 38: Train Loss: 0.3134, Train Acc: 0.9613, Train F1: 0.6581
+2025-05-28 12:46:22,253 - INFO:            Val Loss: 0.6575, Val Acc: 0.8902, Val F1: 0.4105
+2025-05-28 12:46:27,662 - INFO: Epoch 39: Train Loss: 0.2091, Train Acc: 0.9729, Train F1: 0.7361
+2025-05-28 12:46:27,662 - INFO:            Val Loss: 0.4980, Val Acc: 0.9753, Val F1: 0.7506
+2025-05-28 12:46:32,017 - INFO: Epoch 40: Train Loss: 0.3171, Train Acc: 0.9602, Train F1: 0.6522
+2025-05-28 12:46:32,017 - INFO:            Val Loss: 0.6181, Val Acc: 0.9459, Val F1: 0.5743
+2025-05-28 12:46:36,896 - INFO: Epoch 41: Train Loss: 0.2474, Train Acc: 0.9671, Train F1: 0.6950
+2025-05-28 12:46:36,896 - INFO:            Val Loss: 0.3906, Val Acc: 0.9662, Val F1: 0.6890
+2025-05-28 12:46:43,168 - INFO: Epoch 42: Train Loss: 0.2285, Train Acc: 0.9697, Train F1: 0.7129
+2025-05-28 12:46:43,168 - INFO:            Val Loss: 0.4726, Val Acc: 0.9714, Val F1: 0.7145
+2025-05-28 12:46:47,908 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:46:47,909 - INFO: Saved best model with Val F1: 0.8439
+2025-05-28 12:46:47,909 - INFO: Epoch 43: Train Loss: 0.1815, Train Acc: 0.9745, Train F1: 0.7488
+2025-05-28 12:46:47,909 - INFO:            Val Loss: 0.7968, Val Acc: 0.9873, Val F1: 0.8439
+2025-05-28 12:46:53,976 - INFO: Epoch 44: Train Loss: 0.2486, Train Acc: 0.9662, Train F1: 0.6885
+2025-05-28 12:46:53,976 - INFO:            Val Loss: 0.6251, Val Acc: 0.9474, Val F1: 0.5845
+2025-05-28 12:47:00,184 - INFO: Epoch 45: Train Loss: 0.4041, Train Acc: 0.9569, Train F1: 0.6335
+2025-05-28 12:47:00,185 - INFO:            Val Loss: 0.6717, Val Acc: 0.9792, Val F1: 0.7705
+2025-05-28 12:47:09,251 - INFO: Epoch 46: Train Loss: 0.2072, Train Acc: 0.9723, Train F1: 0.7307
+2025-05-28 12:47:09,252 - INFO:            Val Loss: 0.5108, Val Acc: 0.9847, Val F1: 0.8222
+2025-05-28 12:47:18,228 - INFO: Epoch 47: Train Loss: 0.2187, Train Acc: 0.9743, Train F1: 0.7471
+2025-05-28 12:47:18,228 - INFO:            Val Loss: 0.4076, Val Acc: 0.9536, Val F1: 0.6168
+2025-05-28 12:47:26,599 - INFO: Epoch 48: Train Loss: 0.2168, Train Acc: 0.9707, Train F1: 0.7198
+2025-05-28 12:47:26,599 - INFO:            Val Loss: 0.5131, Val Acc: 0.9234, Val F1: 0.4971
+2025-05-28 12:47:32,821 - INFO: Epoch 49: Train Loss: 0.2431, Train Acc: 0.9712, Train F1: 0.7228
+2025-05-28 12:47:32,821 - INFO:            Val Loss: 0.3104, Val Acc: 0.9582, Val F1: 0.6445
+2025-05-28 12:47:38,964 - INFO: Epoch 50: Train Loss: 0.1597, Train Acc: 0.9794, Train F1: 0.7875
+2025-05-28 12:47:38,964 - INFO:            Val Loss: 0.3654, Val Acc: 0.9711, Val F1: 0.7215
+2025-05-28 12:47:44,544 - INFO: Epoch 51: Train Loss: 0.1371, Train Acc: 0.9825, Train F1: 0.8136
+2025-05-28 12:47:44,545 - INFO:            Val Loss: 0.4543, Val Acc: 0.9836, Val F1: 0.8143
+2025-05-28 12:47:50,533 - INFO: Epoch 52: Train Loss: 0.2144, Train Acc: 0.9724, Train F1: 0.7320
+2025-05-28 12:47:50,533 - INFO:            Val Loss: 0.4211, Val Acc: 0.9762, Val F1: 0.7580
+2025-05-28 12:47:56,762 - INFO: Epoch 53: Train Loss: 0.2888, Train Acc: 0.9686, Train F1: 0.7048
+2025-05-28 12:47:56,763 - INFO:            Val Loss: 0.8652, Val Acc: 0.9455, Val F1: 0.5717
+2025-05-28 12:48:02,716 - INFO: Epoch 54: Train Loss: 0.2691, Train Acc: 0.9705, Train F1: 0.7191
+2025-05-28 12:48:02,717 - INFO:            Val Loss: 0.4557, Val Acc: 0.9807, Val F1: 0.7901
+2025-05-28 12:48:07,848 - INFO: Epoch 55: Train Loss: 0.2703, Train Acc: 0.9685, Train F1: 0.7044
+2025-05-28 12:48:07,848 - INFO:            Val Loss: 0.5971, Val Acc: 0.9839, Val F1: 0.8112
+2025-05-28 12:48:13,982 - INFO: Epoch 56: Train Loss: 0.2431, Train Acc: 0.9740, Train F1: 0.7441
+2025-05-28 12:48:13,983 - INFO:            Val Loss: 0.3837, Val Acc: 0.9741, Val F1: 0.7392
+2025-05-28 12:48:20,392 - INFO: Epoch 57: Train Loss: 0.1875, Train Acc: 0.9785, Train F1: 0.7793
+2025-05-28 12:48:20,392 - INFO:            Val Loss: 0.8747, Val Acc: 0.9872, Val F1: 0.8355
+2025-05-28 12:48:29,552 - INFO: Epoch 58: Train Loss: 0.1854, Train Acc: 0.9755, Train F1: 0.7561
+2025-05-28 12:48:29,552 - INFO:            Val Loss: 0.5652, Val Acc: 0.9850, Val F1: 0.8253
+2025-05-28 12:48:38,514 - INFO: Epoch 59: Train Loss: 0.1999, Train Acc: 0.9771, Train F1: 0.7684
+2025-05-28 12:48:38,514 - INFO:            Val Loss: 0.4052, Val Acc: 0.9809, Val F1: 0.7918
+2025-05-28 12:48:46,462 - INFO: Epoch 60: Train Loss: 0.1869, Train Acc: 0.9791, Train F1: 0.7847
+2025-05-28 12:48:46,462 - INFO:            Val Loss: 0.3876, Val Acc: 0.9727, Val F1: 0.7311
+2025-05-28 12:48:52,849 - INFO: Epoch 61: Train Loss: 0.2370, Train Acc: 0.9715, Train F1: 0.7255
+2025-05-28 12:48:52,850 - INFO:            Val Loss: 1.1037, Val Acc: 0.9836, Val F1: 0.7943
+2025-05-28 12:48:59,080 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:48:59,080 - INFO: Saved best model with Val F1: 0.8656
+2025-05-28 12:48:59,080 - INFO: Epoch 62: Train Loss: 0.2253, Train Acc: 0.9741, Train F1: 0.7442
+2025-05-28 12:48:59,080 - INFO:            Val Loss: 1.0950, Val Acc: 0.9897, Val F1: 0.8656
+2025-05-28 12:49:05,394 - INFO: Epoch 63: Train Loss: 0.2719, Train Acc: 0.9720, Train F1: 0.7292
+2025-05-28 12:49:05,394 - INFO:            Val Loss: 0.7892, Val Acc: 0.9848, Val F1: 0.8186
+2025-05-28 12:49:11,512 - INFO: Epoch 64: Train Loss: 0.3241, Train Acc: 0.9702, Train F1: 0.7155
+2025-05-28 12:49:11,512 - INFO:            Val Loss: 0.5486, Val Acc: 0.9092, Val F1: 0.4555
+2025-05-28 12:49:17,537 - INFO: Epoch 65: Train Loss: 0.1608, Train Acc: 0.9787, Train F1: 0.7813
+2025-05-28 12:49:17,537 - INFO:            Val Loss: 0.3414, Val Acc: 0.9693, Val F1: 0.7109
+2025-05-28 12:49:23,512 - INFO: Epoch 66: Train Loss: 0.1503, Train Acc: 0.9799, Train F1: 0.7907
+2025-05-28 12:49:23,513 - INFO:            Val Loss: 0.4163, Val Acc: 0.9814, Val F1: 0.7978
+2025-05-28 12:49:30,074 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:49:30,075 - INFO: Saved best model with Val F1: 0.8832
+2025-05-28 12:49:30,075 - INFO: Epoch 67: Train Loss: 0.1750, Train Acc: 0.9789, Train F1: 0.7830
+2025-05-28 12:49:30,075 - INFO:            Val Loss: 0.7983, Val Acc: 0.9908, Val F1: 0.8832
+2025-05-28 12:49:36,030 - INFO: Epoch 68: Train Loss: 0.1751, Train Acc: 0.9811, Train F1: 0.8014
+2025-05-28 12:49:36,030 - INFO:            Val Loss: 0.6377, Val Acc: 0.9859, Val F1: 0.8338
+2025-05-28 12:49:45,031 - INFO: Epoch 69: Train Loss: 0.1858, Train Acc: 0.9767, Train F1: 0.7644
+2025-05-28 12:49:45,031 - INFO:            Val Loss: 0.7070, Val Acc: 0.9857, Val F1: 0.8353
+2025-05-28 12:49:54,127 - INFO: Epoch 70: Train Loss: 0.1924, Train Acc: 0.9788, Train F1: 0.7819
+2025-05-28 12:49:54,128 - INFO:            Val Loss: 0.9809, Val Acc: 0.9897, Val F1: 0.8690
+2025-05-28 12:50:02,454 - INFO: Epoch 71: Train Loss: 0.2150, Train Acc: 0.9771, Train F1: 0.7676
+2025-05-28 12:50:02,454 - INFO:            Val Loss: 0.7775, Val Acc: 0.9891, Val F1: 0.8676
+2025-05-28 12:50:08,315 - INFO: Epoch 72: Train Loss: 0.2270, Train Acc: 0.9760, Train F1: 0.7595
+2025-05-28 12:50:08,315 - INFO:            Val Loss: 0.7948, Val Acc: 0.9877, Val F1: 0.8393
+2025-05-28 12:50:13,357 - INFO: Epoch 73: Train Loss: 0.2221, Train Acc: 0.9803, Train F1: 0.7948
+2025-05-28 12:50:13,358 - INFO:            Val Loss: 0.3974, Val Acc: 0.9833, Val F1: 0.8186
+2025-05-28 12:50:18,991 - INFO: Epoch 74: Train Loss: 0.1793, Train Acc: 0.9784, Train F1: 0.7789
+2025-05-28 12:50:18,992 - INFO:            Val Loss: 0.6801, Val Acc: 0.9891, Val F1: 0.8664
+2025-05-28 12:50:23,934 - INFO: Epoch 75: Train Loss: 0.1629, Train Acc: 0.9815, Train F1: 0.8041
+2025-05-28 12:50:23,934 - INFO:            Val Loss: 0.5345, Val Acc: 0.9813, Val F1: 0.7973
+2025-05-28 12:50:29,178 - INFO: Epoch 76: Train Loss: 0.1828, Train Acc: 0.9796, Train F1: 0.7885
+2025-05-28 12:50:29,178 - INFO:            Val Loss: 0.4987, Val Acc: 0.9792, Val F1: 0.7826
+2025-05-28 12:50:33,709 - INFO: Epoch 77: Train Loss: 0.1733, Train Acc: 0.9826, Train F1: 0.8143
+2025-05-28 12:50:33,709 - INFO:            Val Loss: 0.6099, Val Acc: 0.9880, Val F1: 0.8563
+2025-05-28 12:50:39,110 - INFO: Epoch 78: Train Loss: 0.2834, Train Acc: 0.9749, Train F1: 0.7509
+2025-05-28 12:50:39,110 - INFO:            Val Loss: 0.6589, Val Acc: 0.9825, Val F1: 0.8061
+2025-05-28 12:50:43,502 - INFO: Epoch 79: Train Loss: 0.2217, Train Acc: 0.9795, Train F1: 0.7877
+2025-05-28 12:50:43,502 - INFO:            Val Loss: 0.5678, Val Acc: 0.9857, Val F1: 0.8353
+2025-05-28 12:50:49,091 - INFO: Epoch 80: Train Loss: 0.1426, Train Acc: 0.9836, Train F1: 0.8227
+2025-05-28 12:50:49,091 - INFO:            Val Loss: 0.7683, Val Acc: 0.8712, Val F1: 0.3695
+2025-05-28 12:50:54,658 - INFO: Epoch 81: Train Loss: 0.1543, Train Acc: 0.9834, Train F1: 0.8211
+2025-05-28 12:50:54,658 - INFO:            Val Loss: 0.3777, Val Acc: 0.9582, Val F1: 0.6453
+2025-05-28 12:51:03,003 - INFO: Epoch 82: Train Loss: 0.1757, Train Acc: 0.9829, Train F1: 0.8164
+2025-05-28 12:51:03,003 - INFO:            Val Loss: 0.5523, Val Acc: 0.9904, Val F1: 0.8831
+2025-05-28 12:51:12,103 - INFO: Epoch 83: Train Loss: 0.1602, Train Acc: 0.9841, Train F1: 0.8280
+2025-05-28 12:51:12,103 - INFO:            Val Loss: 0.7884, Val Acc: 0.9903, Val F1: 0.8802
+2025-05-28 12:51:21,014 - INFO: Epoch 84: Train Loss: 0.1329, Train Acc: 0.9852, Train F1: 0.8379
+2025-05-28 12:51:21,014 - INFO:            Val Loss: 0.4347, Val Acc: 0.9809, Val F1: 0.7962
+2025-05-28 12:51:26,462 - INFO: Epoch 85: Train Loss: 0.2064, Train Acc: 0.9802, Train F1: 0.7936
+2025-05-28 12:51:26,462 - INFO:            Val Loss: 1.4269, Val Acc: 0.9894, Val F1: 0.8562
+2025-05-28 12:51:31,523 - INFO: Epoch 86: Train Loss: 0.1692, Train Acc: 0.9814, Train F1: 0.8038
+2025-05-28 12:51:31,523 - INFO:            Val Loss: 0.5092, Val Acc: 0.9433, Val F1: 0.5733
+2025-05-28 12:51:36,029 - INFO: Epoch 87: Train Loss: 0.2354, Train Acc: 0.9806, Train F1: 0.7964
+2025-05-28 12:51:36,029 - INFO:            Val Loss: 0.5324, Val Acc: 0.9561, Val F1: 0.6322
+2025-05-28 12:51:40,584 - INFO: Epoch 88: Train Loss: 0.1863, Train Acc: 0.9805, Train F1: 0.7964
+2025-05-28 12:51:40,585 - INFO:            Val Loss: 0.5470, Val Acc: 0.9862, Val F1: 0.8401
+2025-05-28 12:51:46,578 - INFO: Epoch 89: Train Loss: 0.1806, Train Acc: 0.9839, Train F1: 0.8262
+2025-05-28 12:51:46,578 - INFO:            Val Loss: 0.8674, Val Acc: 0.9891, Val F1: 0.8634
+2025-05-28 12:51:52,591 - INFO: Epoch 90: Train Loss: 0.1928, Train Acc: 0.9799, Train F1: 0.7911
+2025-05-28 12:51:52,591 - INFO:            Val Loss: 0.5782, Val Acc: 0.9899, Val F1: 0.8758
+2025-05-28 12:51:58,721 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:51:58,721 - INFO: Saved best model with Val F1: 0.8882
+2025-05-28 12:51:58,721 - INFO: Epoch 91: Train Loss: 0.1036, Train Acc: 0.9879, Train F1: 0.8632
+2025-05-28 12:51:58,721 - INFO:            Val Loss: 1.1054, Val Acc: 0.9914, Val F1: 0.8882
+2025-05-28 12:52:05,004 - INFO: Epoch 92: Train Loss: 0.2191, Train Acc: 0.9804, Train F1: 0.7951
+2025-05-28 12:52:05,004 - INFO:            Val Loss: 0.4477, Val Acc: 0.9883, Val F1: 0.8646
+2025-05-28 12:52:10,094 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-28 12:52:10,094 - INFO: Saved best model with Val F1: 0.8989
+2025-05-28 12:52:10,094 - INFO: Epoch 93: Train Loss: 0.1824, Train Acc: 0.9825, Train F1: 0.8132
+2025-05-28 12:52:10,094 - INFO:            Val Loss: 0.7460, Val Acc: 0.9918, Val F1: 0.8989
+2025-05-28 12:52:15,419 - INFO: Epoch 94: Train Loss: 0.1549, Train Acc: 0.9856, Train F1: 0.8414
+2025-05-28 12:52:15,420 - INFO:            Val Loss: 2.3014, Val Acc: 0.9849, Val F1: 0.7849
+2025-05-28 12:52:24,418 - INFO: Epoch 95: Train Loss: 0.1880, Train Acc: 0.9826, Train F1: 0.8136
+2025-05-28 12:52:24,418 - INFO:            Val Loss: 1.1561, Val Acc: 0.8021, Val F1: 0.2774
+2025-05-28 12:52:33,511 - INFO: Epoch 96: Train Loss: 0.1849, Train Acc: 0.9823, Train F1: 0.8111
+2025-05-28 12:52:33,511 - INFO:            Val Loss: 0.6360, Val Acc: 0.9870, Val F1: 0.8496
+2025-05-28 12:52:40,585 - INFO: Epoch 97: Train Loss: 0.1853, Train Acc: 0.9810, Train F1: 0.8001
+2025-05-28 12:52:40,585 - INFO:            Val Loss: 0.5124, Val Acc: 0.9819, Val F1: 0.8022
+2025-05-28 12:52:45,405 - INFO: Epoch 98: Train Loss: 0.2864, Train Acc: 0.9765, Train F1: 0.7640
+2025-05-28 12:52:45,406 - INFO:            Val Loss: 0.6989, Val Acc: 0.9843, Val F1: 0.8247
+2025-05-28 12:52:50,632 - INFO: Epoch 99: Train Loss: 0.1016, Train Acc: 0.9890, Train F1: 0.8747
+2025-05-28 12:52:50,632 - INFO:            Val Loss: 0.7340, Val Acc: 0.9802, Val F1: 0.7887
+2025-05-28 12:52:55,481 - INFO: Epoch 100: Train Loss: 0.1259, Train Acc: 0.9849, Train F1: 0.8350
+2025-05-28 12:52:55,481 - INFO:            Val Loss: 0.9893, Val Acc: 0.9917, Val F1: 0.8935
+2025-05-28 12:52:55,858 - INFO: Training completed. Curves saved to plots/training_curves.png
+2025-05-29 04:48:05,017 - INFO: Starting training with hyperparameters:
+2025-05-29 04:48:05,017 - INFO: input_length=8, no_feats=284, batch_size=64, epochs=100
+2025-05-29 04:48:14,830 - INFO: Training samples: 37089
+2025-05-29 04:48:14,830 - INFO: Validation samples: 7948
+2025-05-29 04:48:14,830 - INFO: Test samples: 7948
+2025-05-29 04:48:55,755 - INFO: Starting training with hyperparameters:
+2025-05-29 04:48:55,755 - INFO: input_length=8, no_feats=284, batch_size=64, epochs=100
+2025-05-29 04:49:05,935 - INFO: Training samples: 37089
+2025-05-29 04:49:05,935 - INFO: Validation samples: 7948
+2025-05-29 04:49:05,935 - INFO: Test samples: 7948
+2025-05-29 04:49:06,519 - INFO: Positive class weight: 24.7741
+2025-05-29 04:49:06,535 - INFO: Model parameters: 1167614
+2025-05-29 04:49:17,666 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 04:49:17,667 - INFO: Saved best model with Val F1: 0.2041
+2025-05-29 04:49:17,667 - INFO: Epoch 1: Train Loss: 1.4499, Train Acc: 0.6242, Train F1: 0.1046
+2025-05-29 04:49:17,667 - INFO:            Val Loss: 1.0466, Val Acc: 0.7929, Val F1: 0.2041
+2025-05-29 05:41:06,994 - INFO: Starting training with hyperparameters:
+2025-05-29 05:41:06,994 - INFO: input_length=8, no_feats=284, batch_size=64, epochs=100
+2025-05-29 05:41:19,509 - INFO: Training samples: 37089
+2025-05-29 05:41:19,509 - INFO: Validation samples: 7948
+2025-05-29 05:41:19,509 - INFO: Test samples: 7948
+2025-05-29 05:41:20,071 - INFO: Positive class weight: 24.7741
+2025-05-29 05:41:20,083 - INFO: Model parameters: 1167614
+2025-05-29 05:41:44,896 - INFO: Starting training with hyperparameters:
+2025-05-29 05:41:44,896 - INFO: input_length=8, no_feats=284, batch_size=64, epochs=100
+2025-05-29 05:42:03,893 - INFO: Starting training with hyperparameters:
+2025-05-29 05:42:03,893 - INFO: input_length=8, no_feats=284, batch_size=64, epochs=100
+2025-05-29 05:42:16,530 - INFO: Training samples: 37089
+2025-05-29 05:42:16,531 - INFO: Validation samples: 7948
+2025-05-29 05:42:16,531 - INFO: Test samples: 7948
+2025-05-29 05:42:17,085 - INFO: Positive class weight: 24.7741
+2025-05-29 05:42:17,097 - INFO: Model parameters: 1167614
+2025-05-29 05:42:43,716 - INFO: Starting training with hyperparameters:
+2025-05-29 05:42:43,716 - INFO: input_length=8, no_feats=284, batch_size=64, epochs=100
+2025-05-29 05:42:57,293 - INFO: Training samples: 37089
+2025-05-29 05:42:57,294 - INFO: Validation samples: 7948
+2025-05-29 05:42:57,294 - INFO: Test samples: 7948
+2025-05-29 05:42:57,855 - INFO: Positive class weight: 24.7741
+2025-05-29 05:42:57,868 - INFO: Model parameters: 1167614
+2025-05-29 05:43:08,371 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:43:08,371 - INFO: Saved best model with Val F1: 0.1026
+2025-05-29 05:43:08,371 - INFO: Epoch 1: Train Loss: 1.6010, Train Acc: 0.5939, Train F1: 0.0972
+2025-05-29 05:43:08,371 - INFO:            Val Loss: 1.2669, Val Acc: 0.3815, Val F1: 0.1026
+2025-05-29 05:43:17,686 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:43:17,686 - INFO: Saved best model with Val F1: 0.2771
+2025-05-29 05:43:17,686 - INFO: Epoch 2: Train Loss: 1.2269, Train Acc: 0.6761, Train F1: 0.1348
+2025-05-29 05:43:17,686 - INFO:            Val Loss: 1.0519, Val Acc: 0.8910, Val F1: 0.2771
+2025-05-29 05:43:27,163 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:43:27,164 - INFO: Saved best model with Val F1: 0.3133
+2025-05-29 05:43:27,164 - INFO: Epoch 3: Train Loss: 1.1972, Train Acc: 0.7111, Train F1: 0.1553
+2025-05-29 05:43:27,164 - INFO:            Val Loss: 1.3025, Val Acc: 0.9338, Val F1: 0.3133
+2025-05-29 05:43:31,872 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:43:31,873 - INFO: Saved best model with Val F1: 0.3318
+2025-05-29 05:43:31,873 - INFO: Epoch 4: Train Loss: 1.1337, Train Acc: 0.7398, Train F1: 0.1782
+2025-05-29 05:43:31,873 - INFO:            Val Loss: 0.9366, Val Acc: 0.9073, Val F1: 0.3318
+2025-05-29 05:43:41,198 - INFO: Epoch 5: Train Loss: 0.9877, Train Acc: 0.7780, Train F1: 0.2083
+2025-05-29 05:43:41,199 - INFO:            Val Loss: 0.9053, Val Acc: 0.6639, Val F1: 0.1749
+2025-05-29 05:43:50,697 - INFO: Epoch 6: Train Loss: 1.0454, Train Acc: 0.7762, Train F1: 0.2082
+2025-05-29 05:43:50,697 - INFO:            Val Loss: 0.7986, Val Acc: 0.7876, Val F1: 0.2458
+2025-05-29 05:44:00,373 - INFO: Epoch 7: Train Loss: 0.9369, Train Acc: 0.8034, Train F1: 0.2379
+2025-05-29 05:44:00,373 - INFO:            Val Loss: 1.0174, Val Acc: 0.5478, Val F1: 0.1410
+2025-05-29 05:44:10,035 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:44:10,035 - INFO: Saved best model with Val F1: 0.4399
+2025-05-29 05:44:10,036 - INFO: Epoch 8: Train Loss: 0.9141, Train Acc: 0.8136, Train F1: 0.2509
+2025-05-29 05:44:10,036 - INFO:            Val Loss: 0.9241, Val Acc: 0.9385, Val F1: 0.4399
+2025-05-29 05:44:19,351 - INFO: Epoch 9: Train Loss: 0.8099, Train Acc: 0.8313, Train F1: 0.2758
+2025-05-29 05:44:19,352 - INFO:            Val Loss: 0.6976, Val Acc: 0.8435, Val F1: 0.3097
+2025-05-29 05:44:28,989 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:44:28,990 - INFO: Saved best model with Val F1: 0.4923
+2025-05-29 05:44:28,990 - INFO: Epoch 10: Train Loss: 0.7447, Train Acc: 0.8488, Train F1: 0.3018
+2025-05-29 05:44:28,990 - INFO:            Val Loss: 0.9343, Val Acc: 0.9504, Val F1: 0.4923
+2025-05-29 05:44:38,672 - INFO: Epoch 11: Train Loss: 0.8173, Train Acc: 0.8463, Train F1: 0.2974
+2025-05-29 05:44:38,673 - INFO:            Val Loss: 0.9076, Val Acc: 0.6775, Val F1: 0.1845
+2025-05-29 05:44:48,175 - INFO: Epoch 12: Train Loss: 0.6284, Train Acc: 0.8781, Train F1: 0.3589
+2025-05-29 05:44:48,175 - INFO:            Val Loss: 0.6148, Val Acc: 0.8512, Val F1: 0.3282
+2025-05-29 05:44:57,856 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:44:57,856 - INFO: Saved best model with Val F1: 0.5198
+2025-05-29 05:44:57,856 - INFO: Epoch 13: Train Loss: 0.5836, Train Acc: 0.8881, Train F1: 0.3806
+2025-05-29 05:44:57,856 - INFO:            Val Loss: 0.5541, Val Acc: 0.9375, Val F1: 0.5198
+2025-05-29 05:45:07,365 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:45:07,365 - INFO: Saved best model with Val F1: 0.6352
+2025-05-29 05:45:07,365 - INFO: Epoch 14: Train Loss: 0.5629, Train Acc: 0.8898, Train F1: 0.3858
+2025-05-29 05:45:07,365 - INFO:            Val Loss: 0.8158, Val Acc: 0.9689, Val F1: 0.6352
+2025-05-29 05:45:14,792 - INFO: Epoch 15: Train Loss: 0.5815, Train Acc: 0.8928, Train F1: 0.3924
+2025-05-29 05:45:14,792 - INFO:            Val Loss: 0.6229, Val Acc: 0.8593, Val F1: 0.3408
+2025-05-29 05:45:23,969 - INFO: Epoch 16: Train Loss: 0.6515, Train Acc: 0.8915, Train F1: 0.3891
+2025-05-29 05:45:23,969 - INFO:            Val Loss: 0.6862, Val Acc: 0.7942, Val F1: 0.2664
+2025-05-29 05:45:33,284 - INFO: Epoch 17: Train Loss: 0.4331, Train Acc: 0.9180, Train F1: 0.4667
+2025-05-29 05:45:33,285 - INFO:            Val Loss: 0.4941, Val Acc: 0.9085, Val F1: 0.4403
+2025-05-29 05:45:42,619 - INFO: Epoch 18: Train Loss: 0.5133, Train Acc: 0.9115, Train F1: 0.4436
+2025-05-29 05:45:42,619 - INFO:            Val Loss: 0.6791, Val Acc: 0.7798, Val F1: 0.2553
+2025-05-29 05:45:51,979 - INFO: Epoch 19: Train Loss: 0.5056, Train Acc: 0.9141, Train F1: 0.4513
+2025-05-29 05:45:51,979 - INFO:            Val Loss: 0.4982, Val Acc: 0.9411, Val F1: 0.5509
+2025-05-29 05:46:01,252 - INFO: Epoch 20: Train Loss: 0.4170, Train Acc: 0.9267, Train F1: 0.4968
+2025-05-29 05:46:01,253 - INFO:            Val Loss: 0.6578, Val Acc: 0.9594, Val F1: 0.6231
+2025-05-29 05:46:10,432 - INFO: Epoch 21: Train Loss: 0.4260, Train Acc: 0.9293, Train F1: 0.5043
+2025-05-29 05:46:10,433 - INFO:            Val Loss: 0.5874, Val Acc: 0.9382, Val F1: 0.5398
+2025-05-29 05:46:19,666 - INFO: Epoch 22: Train Loss: 0.4475, Train Acc: 0.9320, Train F1: 0.5145
+2025-05-29 05:46:19,666 - INFO:            Val Loss: 0.6013, Val Acc: 0.9054, Val F1: 0.4346
+2025-05-29 05:46:28,974 - INFO: Epoch 23: Train Loss: 0.4019, Train Acc: 0.9328, Train F1: 0.5186
+2025-05-29 05:46:28,974 - INFO:            Val Loss: 0.4301, Val Acc: 0.9455, Val F1: 0.5700
+2025-05-29 05:46:38,599 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:46:38,599 - INFO: Saved best model with Val F1: 0.7043
+2025-05-29 05:46:38,599 - INFO: Epoch 24: Train Loss: 0.3154, Train Acc: 0.9451, Train F1: 0.5722
+2025-05-29 05:46:38,599 - INFO:            Val Loss: 0.4242, Val Acc: 0.9703, Val F1: 0.7043
+2025-05-29 05:46:48,058 - INFO: Epoch 25: Train Loss: 0.3511, Train Acc: 0.9438, Train F1: 0.5650
+2025-05-29 05:46:48,058 - INFO:            Val Loss: 0.5708, Val Acc: 0.9378, Val F1: 0.5375
+2025-05-29 05:46:57,338 - INFO: Epoch 26: Train Loss: 0.3438, Train Acc: 0.9469, Train F1: 0.5823
+2025-05-29 05:46:57,338 - INFO:            Val Loss: 1.3597, Val Acc: 0.9776, Val F1: 0.6877
+2025-05-29 05:47:06,822 - INFO: Epoch 27: Train Loss: 0.4357, Train Acc: 0.9359, Train F1: 0.5318
+2025-05-29 05:47:06,822 - INFO:            Val Loss: 0.4675, Val Acc: 0.9712, Val F1: 0.7038
+2025-05-29 05:47:16,271 - INFO: Epoch 28: Train Loss: 0.3430, Train Acc: 0.9490, Train F1: 0.5913
+2025-05-29 05:47:16,272 - INFO:            Val Loss: 0.4879, Val Acc: 0.9248, Val F1: 0.4975
+2025-05-29 05:47:25,754 - INFO: Epoch 29: Train Loss: 0.3174, Train Acc: 0.9510, Train F1: 0.6013
+2025-05-29 05:47:25,754 - INFO:            Val Loss: 0.5119, Val Acc: 0.9461, Val F1: 0.5779
+2025-05-29 05:47:35,228 - INFO: Epoch 30: Train Loss: 0.3117, Train Acc: 0.9534, Train F1: 0.6136
+2025-05-29 05:47:35,228 - INFO:            Val Loss: 0.4666, Val Acc: 0.9422, Val F1: 0.5658
+2025-05-29 05:47:44,888 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:47:44,889 - INFO: Saved best model with Val F1: 0.7292
+2025-05-29 05:47:44,889 - INFO: Epoch 31: Train Loss: 0.3036, Train Acc: 0.9552, Train F1: 0.6236
+2025-05-29 05:47:44,889 - INFO:            Val Loss: 0.5271, Val Acc: 0.9742, Val F1: 0.7292
+2025-05-29 05:47:54,363 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:47:54,364 - INFO: Saved best model with Val F1: 0.7654
+2025-05-29 05:47:54,364 - INFO: Epoch 32: Train Loss: 0.2649, Train Acc: 0.9601, Train F1: 0.6514
+2025-05-29 05:47:54,364 - INFO:            Val Loss: 0.6213, Val Acc: 0.9799, Val F1: 0.7654
+2025-05-29 05:48:01,599 - INFO: Epoch 33: Train Loss: 0.2635, Train Acc: 0.9600, Train F1: 0.6516
+2025-05-29 05:48:01,599 - INFO:            Val Loss: 0.5539, Val Acc: 0.9157, Val F1: 0.4699
+2025-05-29 05:48:10,914 - INFO: Epoch 34: Train Loss: 0.3528, Train Acc: 0.9515, Train F1: 0.6043
+2025-05-29 05:48:10,914 - INFO:            Val Loss: 0.4318, Val Acc: 0.9507, Val F1: 0.6016
+2025-05-29 05:48:20,589 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:48:20,589 - INFO: Saved best model with Val F1: 0.7812
+2025-05-29 05:48:20,589 - INFO: Epoch 35: Train Loss: 0.3161, Train Acc: 0.9586, Train F1: 0.6431
+2025-05-29 05:48:20,589 - INFO:            Val Loss: 0.9222, Val Acc: 0.9813, Val F1: 0.7812
+2025-05-29 05:48:30,006 - INFO: Epoch 36: Train Loss: 0.3533, Train Acc: 0.9548, Train F1: 0.6210
+2025-05-29 05:48:30,006 - INFO:            Val Loss: 0.4346, Val Acc: 0.9761, Val F1: 0.7520
+2025-05-29 05:48:39,191 - INFO: Epoch 37: Train Loss: 0.2509, Train Acc: 0.9650, Train F1: 0.6808
+2025-05-29 05:48:39,191 - INFO:            Val Loss: 0.4368, Val Acc: 0.9386, Val F1: 0.5523
+2025-05-29 05:48:48,399 - INFO: Epoch 38: Train Loss: 0.2485, Train Acc: 0.9654, Train F1: 0.6853
+2025-05-29 05:48:48,399 - INFO:            Val Loss: 0.4865, Val Acc: 0.9667, Val F1: 0.6879
+2025-05-29 05:48:53,179 - INFO: Epoch 39: Train Loss: 0.3782, Train Acc: 0.9525, Train F1: 0.6091
+2025-05-29 05:48:53,179 - INFO:            Val Loss: 0.5513, Val Acc: 0.9118, Val F1: 0.4612
+2025-05-29 05:49:02,170 - INFO: Epoch 40: Train Loss: 0.2717, Train Acc: 0.9616, Train F1: 0.6601
+2025-05-29 05:49:02,170 - INFO:            Val Loss: 0.6549, Val Acc: 0.9750, Val F1: 0.7329
+2025-05-29 05:49:11,198 - INFO: Epoch 41: Train Loss: 0.3582, Train Acc: 0.9591, Train F1: 0.6455
+2025-05-29 05:49:11,198 - INFO:            Val Loss: 0.6591, Val Acc: 0.9059, Val F1: 0.4418
+2025-05-29 05:49:20,389 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:49:20,389 - INFO: Saved best model with Val F1: 0.8239
+2025-05-29 05:49:20,389 - INFO: Epoch 42: Train Loss: 0.2314, Train Acc: 0.9672, Train F1: 0.6965
+2025-05-29 05:49:20,389 - INFO:            Val Loss: 0.4778, Val Acc: 0.9848, Val F1: 0.8239
+2025-05-29 05:49:28,308 - INFO: Epoch 43: Train Loss: 0.2033, Train Acc: 0.9712, Train F1: 0.7233
+2025-05-29 05:49:28,308 - INFO:            Val Loss: 0.3401, Val Acc: 0.9741, Val F1: 0.7386
+2025-05-29 05:49:34,181 - INFO: Epoch 44: Train Loss: 0.2575, Train Acc: 0.9682, Train F1: 0.7029
+2025-05-29 05:49:34,181 - INFO:            Val Loss: 1.0867, Val Acc: 0.9858, Val F1: 0.8157
+2025-05-29 05:49:39,979 - INFO: Epoch 45: Train Loss: 0.2786, Train Acc: 0.9673, Train F1: 0.6963
+2025-05-29 05:49:39,979 - INFO:            Val Loss: 0.5722, Val Acc: 0.9794, Val F1: 0.7772
+2025-05-29 05:49:46,452 - INFO: Epoch 46: Train Loss: 0.2145, Train Acc: 0.9721, Train F1: 0.7300
+2025-05-29 05:49:46,452 - INFO:            Val Loss: 0.6052, Val Acc: 0.9813, Val F1: 0.7922
+2025-05-29 05:49:52,500 - INFO: Epoch 47: Train Loss: 0.2177, Train Acc: 0.9700, Train F1: 0.7157
+2025-05-29 05:49:52,500 - INFO:            Val Loss: 1.9213, Val Acc: 0.9834, Val F1: 0.7668
+2025-05-29 05:49:57,243 - INFO: Epoch 48: Train Loss: 0.2369, Train Acc: 0.9707, Train F1: 0.7192
+2025-05-29 05:49:57,243 - INFO:            Val Loss: 0.5806, Val Acc: 0.9845, Val F1: 0.8183
+2025-05-29 05:50:03,212 - INFO: Epoch 49: Train Loss: 0.2184, Train Acc: 0.9709, Train F1: 0.7219
+2025-05-29 05:50:03,212 - INFO:            Val Loss: 0.6717, Val Acc: 0.9825, Val F1: 0.8006
+2025-05-29 05:50:09,297 - INFO: Epoch 50: Train Loss: 0.2330, Train Acc: 0.9716, Train F1: 0.7270
+2025-05-29 05:50:09,297 - INFO:            Val Loss: 0.5111, Val Acc: 0.9748, Val F1: 0.7429
+2025-05-29 05:50:16,289 - INFO: Epoch 51: Train Loss: 0.2919, Train Acc: 0.9713, Train F1: 0.7243
+2025-05-29 05:50:16,289 - INFO:            Val Loss: 0.5147, Val Acc: 0.9724, Val F1: 0.7293
+2025-05-29 05:50:25,718 - INFO: Epoch 52: Train Loss: 0.1559, Train Acc: 0.9789, Train F1: 0.7832
+2025-05-29 05:50:25,718 - INFO:            Val Loss: 0.4093, Val Acc: 0.9503, Val F1: 0.6022
+2025-05-29 05:50:35,117 - INFO: Epoch 53: Train Loss: 0.2538, Train Acc: 0.9710, Train F1: 0.7229
+2025-05-29 05:50:35,117 - INFO:            Val Loss: 0.4827, Val Acc: 0.9712, Val F1: 0.7190
+2025-05-29 05:50:44,353 - INFO: Epoch 54: Train Loss: 0.1378, Train Acc: 0.9782, Train F1: 0.7770
+2025-05-29 05:50:44,353 - INFO:            Val Loss: 1.5018, Val Acc: 0.6644, Val F1: 0.1876
+2025-05-29 05:50:53,623 - INFO: Epoch 55: Train Loss: 0.2429, Train Acc: 0.9719, Train F1: 0.7287
+2025-05-29 05:50:53,624 - INFO:            Val Loss: 0.3983, Val Acc: 0.9586, Val F1: 0.6451
+2025-05-29 05:51:02,982 - INFO: Epoch 56: Train Loss: 0.2357, Train Acc: 0.9697, Train F1: 0.7133
+2025-05-29 05:51:02,982 - INFO:            Val Loss: 0.6336, Val Acc: 0.8625, Val F1: 0.3552
+2025-05-29 05:51:12,324 - INFO: Epoch 57: Train Loss: 0.1742, Train Acc: 0.9798, Train F1: 0.7899
+2025-05-29 05:51:12,324 - INFO:            Val Loss: 0.4447, Val Acc: 0.9034, Val F1: 0.4419
+2025-05-29 05:51:21,448 - INFO: Epoch 58: Train Loss: 0.2197, Train Acc: 0.9733, Train F1: 0.7390
+2025-05-29 05:51:21,448 - INFO:            Val Loss: 0.7494, Val Acc: 0.8522, Val F1: 0.3395
+2025-05-29 05:51:30,565 - INFO: Epoch 59: Train Loss: 0.3388, Train Acc: 0.9671, Train F1: 0.6951
+2025-05-29 05:51:30,565 - INFO:            Val Loss: 0.3387, Val Acc: 0.9522, Val F1: 0.6130
+2025-05-29 05:51:39,825 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:51:39,825 - INFO: Saved best model with Val F1: 0.8476
+2025-05-29 05:51:39,825 - INFO: Epoch 60: Train Loss: 0.2376, Train Acc: 0.9740, Train F1: 0.7439
+2025-05-29 05:51:39,825 - INFO:            Val Loss: 0.5783, Val Acc: 0.9874, Val F1: 0.8476
+2025-05-29 05:51:49,267 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:51:49,268 - INFO: Saved best model with Val F1: 0.8672
+2025-05-29 05:51:49,268 - INFO: Epoch 61: Train Loss: 0.1983, Train Acc: 0.9788, Train F1: 0.7822
+2025-05-29 05:51:49,268 - INFO:            Val Loss: 0.6914, Val Acc: 0.9896, Val F1: 0.8672
+2025-05-29 05:51:58,453 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:51:58,454 - INFO: Saved best model with Val F1: 0.8831
+2025-05-29 05:51:58,454 - INFO: Epoch 62: Train Loss: 0.2316, Train Acc: 0.9755, Train F1: 0.7558
+2025-05-29 05:51:58,454 - INFO:            Val Loss: 0.4104, Val Acc: 0.9904, Val F1: 0.8831
+2025-05-29 05:52:05,950 - INFO: Epoch 63: Train Loss: 0.2343, Train Acc: 0.9742, Train F1: 0.7455
+2025-05-29 05:52:05,950 - INFO:            Val Loss: 0.4459, Val Acc: 0.9879, Val F1: 0.8545
+2025-05-29 05:52:12,555 - INFO: Epoch 64: Train Loss: 0.1937, Train Acc: 0.9789, Train F1: 0.7829
+2025-05-29 05:52:12,555 - INFO:            Val Loss: 0.2908, Val Acc: 0.9825, Val F1: 0.8077
+2025-05-29 05:52:18,476 - INFO: Epoch 65: Train Loss: 0.1208, Train Acc: 0.9817, Train F1: 0.8062
+2025-05-29 05:52:18,476 - INFO:            Val Loss: 0.3694, Val Acc: 0.9606, Val F1: 0.6557
+2025-05-29 05:52:24,568 - INFO: Epoch 66: Train Loss: 0.1512, Train Acc: 0.9800, Train F1: 0.7923
+2025-05-29 05:52:24,568 - INFO:            Val Loss: 0.4320, Val Acc: 0.9902, Val F1: 0.8800
+2025-05-29 05:52:30,261 - INFO: Epoch 67: Train Loss: 0.2409, Train Acc: 0.9733, Train F1: 0.7384
+2025-05-29 05:52:30,261 - INFO:            Val Loss: 0.8637, Val Acc: 0.9880, Val F1: 0.8494
+2025-05-29 05:52:34,749 - INFO: Epoch 68: Train Loss: 0.1835, Train Acc: 0.9770, Train F1: 0.7674
+2025-05-29 05:52:34,749 - INFO:            Val Loss: 0.3010, Val Acc: 0.9557, Val F1: 0.6341
+2025-05-29 05:52:41,043 - INFO: Epoch 69: Train Loss: 0.3281, Train Acc: 0.9738, Train F1: 0.7431
+2025-05-29 05:52:41,043 - INFO:            Val Loss: 0.5641, Val Acc: 0.9704, Val F1: 0.7138
+2025-05-29 05:52:47,203 - INFO: Epoch 70: Train Loss: 0.2047, Train Acc: 0.9795, Train F1: 0.7875
+2025-05-29 05:52:47,204 - INFO:            Val Loss: 0.3797, Val Acc: 0.9738, Val F1: 0.7387
+2025-05-29 05:52:53,301 - INFO: Epoch 71: Train Loss: 0.1825, Train Acc: 0.9766, Train F1: 0.7641
+2025-05-29 05:52:53,301 - INFO:            Val Loss: 0.5470, Val Acc: 0.9864, Val F1: 0.8393
+2025-05-29 05:53:01,116 - INFO: Epoch 72: Train Loss: 0.1962, Train Acc: 0.9755, Train F1: 0.7556
+2025-05-29 05:53:01,117 - INFO:            Val Loss: 1.3427, Val Acc: 0.9880, Val F1: 0.8365
+2025-05-29 05:53:10,177 - INFO: Epoch 73: Train Loss: 0.2528, Train Acc: 0.9747, Train F1: 0.7491
+2025-05-29 05:53:10,177 - INFO:            Val Loss: 0.8791, Val Acc: 0.8164, Val F1: 0.2975
+2025-05-29 05:53:19,570 - INFO: Epoch 74: Train Loss: 0.1194, Train Acc: 0.9837, Train F1: 0.8243
+2025-05-29 05:53:19,570 - INFO:            Val Loss: 0.5200, Val Acc: 0.9864, Val F1: 0.8448
+2025-05-29 05:53:26,190 - INFO: Epoch 75: Train Loss: 0.1427, Train Acc: 0.9832, Train F1: 0.8199
+2025-05-29 05:53:26,190 - INFO:            Val Loss: 0.7668, Val Acc: 0.9869, Val F1: 0.8385
+2025-05-29 05:53:31,832 - INFO: Epoch 76: Train Loss: 0.2790, Train Acc: 0.9729, Train F1: 0.7361
+2025-05-29 05:53:31,833 - INFO:            Val Loss: 0.5384, Val Acc: 0.9806, Val F1: 0.7930
+2025-05-29 05:53:37,142 - INFO: Epoch 77: Train Loss: 0.2289, Train Acc: 0.9762, Train F1: 0.7610
+2025-05-29 05:53:37,142 - INFO:            Val Loss: 0.7749, Val Acc: 0.9903, Val F1: 0.8791
+2025-05-29 05:53:43,212 - INFO: Epoch 78: Train Loss: 0.1662, Train Acc: 0.9825, Train F1: 0.8130
+2025-05-29 05:53:43,213 - INFO:            Val Loss: 0.4356, Val Acc: 0.9840, Val F1: 0.8224
+2025-05-29 05:53:49,454 - INFO: Epoch 79: Train Loss: 0.1866, Train Acc: 0.9792, Train F1: 0.7845
+2025-05-29 05:53:49,455 - INFO:            Val Loss: 1.1107, Val Acc: 0.9906, Val F1: 0.8735
+2025-05-29 05:53:55,415 - INFO: Epoch 80: Train Loss: 0.1373, Train Acc: 0.9843, Train F1: 0.8294
+2025-05-29 05:53:55,415 - INFO:            Val Loss: 0.5202, Val Acc: 0.9892, Val F1: 0.8705
+2025-05-29 05:54:00,529 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:54:00,529 - INFO: Saved best model with Val F1: 0.8872
+2025-05-29 05:54:00,529 - INFO: Epoch 81: Train Loss: 0.1352, Train Acc: 0.9836, Train F1: 0.8223
+2025-05-29 05:54:00,529 - INFO:            Val Loss: 0.5243, Val Acc: 0.9908, Val F1: 0.8872
+2025-05-29 05:54:06,741 - INFO: Epoch 82: Train Loss: 0.2059, Train Acc: 0.9803, Train F1: 0.7940
+2025-05-29 05:54:06,741 - INFO:            Val Loss: 0.3352, Val Acc: 0.9696, Val F1: 0.7153
+2025-05-29 05:54:12,652 - INFO: Epoch 83: Train Loss: 0.1499, Train Acc: 0.9847, Train F1: 0.8336
+2025-05-29 05:54:12,652 - INFO:            Val Loss: 0.4241, Val Acc: 0.9314, Val F1: 0.5273
+2025-05-29 05:54:20,934 - INFO: Epoch 84: Train Loss: 0.1591, Train Acc: 0.9825, Train F1: 0.8138
+2025-05-29 05:54:20,935 - INFO:            Val Loss: 0.5486, Val Acc: 0.9307, Val F1: 0.5246
+2025-05-29 05:54:29,969 - INFO: Epoch 85: Train Loss: 0.1883, Train Acc: 0.9799, Train F1: 0.7908
+2025-05-29 05:54:29,969 - INFO:            Val Loss: 0.4531, Val Acc: 0.9395, Val F1: 0.5567
+2025-05-29 05:54:38,850 - INFO: ONNX model saved and verified at models/ts_mixer.onnx
+2025-05-29 05:54:38,850 - INFO: Saved best model with Val F1: 0.8932
+2025-05-29 05:54:38,850 - INFO: Epoch 86: Train Loss: 0.2155, Train Acc: 0.9776, Train F1: 0.7724
+2025-05-29 05:54:38,850 - INFO:            Val Loss: 0.9336, Val Acc: 0.9917, Val F1: 0.8932
+2025-05-29 05:54:44,956 - INFO: Epoch 87: Train Loss: 0.1393, Train Acc: 0.9833, Train F1: 0.8207
+2025-05-29 05:54:44,956 - INFO:            Val Loss: 0.5555, Val Acc: 0.9872, Val F1: 0.8504
+2025-05-29 05:54:51,383 - INFO: Epoch 88: Train Loss: 0.1966, Train Acc: 0.9820, Train F1: 0.8090
+2025-05-29 05:54:51,383 - INFO:            Val Loss: 0.9671, Val Acc: 0.9181, Val F1: 0.4813
+2025-05-29 05:54:57,727 - INFO: Epoch 89: Train Loss: 0.2661, Train Acc: 0.9750, Train F1: 0.7520
+2025-05-29 05:54:57,728 - INFO:            Val Loss: 0.7220, Val Acc: 0.9855, Val F1: 0.8336
+2025-05-29 05:55:03,958 - INFO: Epoch 90: Train Loss: 0.1947, Train Acc: 0.9799, Train F1: 0.7909
+2025-05-29 05:55:03,958 - INFO:            Val Loss: 0.6045, Val Acc: 0.9708, Val F1: 0.7191
+2025-05-29 05:55:10,022 - INFO: Epoch 91: Train Loss: 0.2238, Train Acc: 0.9786, Train F1: 0.7809
+2025-05-29 05:55:10,022 - INFO:            Val Loss: 0.4368, Val Acc: 0.9882, Val F1: 0.8576
+2025-05-29 05:55:15,827 - INFO: Epoch 92: Train Loss: 0.2138, Train Acc: 0.9768, Train F1: 0.7656
+2025-05-29 05:55:15,827 - INFO:            Val Loss: 0.4321, Val Acc: 0.9721, Val F1: 0.7299
+2025-05-29 05:55:21,829 - INFO: Epoch 93: Train Loss: 0.1685, Train Acc: 0.9835, Train F1: 0.8221
+2025-05-29 05:55:21,830 - INFO:            Val Loss: 0.7798, Val Acc: 0.9896, Val F1: 0.8729
+2025-05-29 05:55:27,879 - INFO: Epoch 94: Train Loss: 0.1837, Train Acc: 0.9807, Train F1: 0.7984
+2025-05-29 05:55:27,879 - INFO:            Val Loss: 0.5895, Val Acc: 0.9879, Val F1: 0.8580
+2025-05-29 05:55:34,981 - INFO: Epoch 95: Train Loss: 0.1532, Train Acc: 0.9829, Train F1: 0.8167
+2025-05-29 05:55:34,982 - INFO:            Val Loss: 0.7672, Val Acc: 0.9850, Val F1: 0.8307
+2025-05-29 05:55:44,040 - INFO: Epoch 96: Train Loss: 0.1111, Train Acc: 0.9868, Train F1: 0.8533
+2025-05-29 05:55:44,040 - INFO:            Val Loss: 1.2816, Val Acc: 0.9913, Val F1: 0.8852
+2025-05-29 05:55:53,132 - INFO: Epoch 97: Train Loss: 0.1148, Train Acc: 0.9854, Train F1: 0.8403
+2025-05-29 05:55:53,132 - INFO:            Val Loss: 1.3252, Val Acc: 0.9917, Val F1: 0.8918
+2025-05-29 05:56:00,522 - INFO: Epoch 98: Train Loss: 0.2565, Train Acc: 0.9786, Train F1: 0.7801
+2025-05-29 05:56:00,523 - INFO:            Val Loss: 1.5232, Val Acc: 0.9863, Val F1: 0.8222
+2025-05-29 05:56:06,557 - INFO: Epoch 99: Train Loss: 0.1820, Train Acc: 0.9826, Train F1: 0.8139
+2025-05-29 05:56:06,557 - INFO:            Val Loss: 1.2150, Val Acc: 0.9894, Val F1: 0.8614
+2025-05-29 05:56:13,012 - INFO: Epoch 100: Train Loss: 0.1472, Train Acc: 0.9846, Train F1: 0.8326
+2025-05-29 05:56:13,012 - INFO:            Val Loss: 0.6946, Val Acc: 0.9899, Val F1: 0.8773
+2025-05-29 05:56:13,396 - INFO: Training completed. Curves saved to plots/training_curves.png

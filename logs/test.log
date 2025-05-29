@@ -1,0 +1,4 @@
+2025-05-29 01:07:45,509 - INFO: Starting testing with hyperparameters:
+2025-05-29 01:07:45,509 - INFO: input_length=8, no_feats=284, batch_size=32
+2025-05-29 01:07:49,640 - INFO: Test samples: 7948
+2025-05-29 01:07:49,656 - INFO: Loaded ONNX model from models/ts_mixer.onnx
