@@ -2,29 +2,17 @@ import torch
 import numpy as np
 import pandas as pd
 import os
-import logging
 import onnxruntime as ort
 from dataset import VortexDataset
-from torch.utils.data import DataLoader
-
-def setup_logging():
-    os.makedirs('logs', exist_ok=True)
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s: %(message)s',
-        handlers=[
-            logging.FileHandler('logs/predict.log', mode='w'),
-            logging.StreamHandler()
-        ]
-    )
-    return logging.getLogger(__name__)
+import warnings
+warnings.filterwarnings("ignore")
 
 def load_onnx_model(model_path):
     """
     加载ONNX模型
     """
     if not os.path.exists(model_path):
-        raise FileNotFoundError(f'{model_path} 文件不存在，请先训练模型')
+        raise FileNotFoundError(f'{model_path} 文件不存在')
     
     try:
         session = ort.InferenceSession(model_path, providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
@@ -36,102 +24,58 @@ def predict_single(session, input_data):
     """
     对单个样本进行预测
     """
-    # 确保输入是float32类型的numpy数组
     if isinstance(input_data, torch.Tensor):
         input_data = input_data.numpy()
     
     input_data = input_data.astype(np.float32)
     
-    # 如果输入是单个样本，添加batch维度
     if len(input_data.shape) == 2:  # (seq_len, features)
         input_data = np.expand_dims(input_data, axis=0)  # (1, seq_len, features)
     
-    # 执行推理
     outputs = session.run(None, {'input': input_data})[0]
-    
-    # 应用sigmoid并转换为二分类结果
     probs = 1 / (1 + np.exp(-outputs))  # sigmoid
-    predictions = (probs >= 0.5).astype(int)
+    prediction = (probs >= 0.5).astype(int)
     
-    return predictions, probs
+    return prediction[0], probs[0]
 
-def predict_batch(session, data_loader):
-    """
-    对批量数据进行预测
-    """
-    all_preds = []
-    all_probs = []
-    all_inputs = []
-    
-    for batch_idx, (x, y) in enumerate(data_loader):
-        x_np = x.numpy().astype(np.float32)
-        
-        # ONNX推理
-        outputs = session.run(None, {'input': x_np})[0]
-        
-        # 应用sigmoid并转换为二分类结果
-        probs = 1 / (1 + np.exp(-outputs))
-        preds = (probs >= 0.5).astype(int)
-        
-        all_preds.extend(preds)
-        all_probs.extend(probs)
-        all_inputs.extend(x_np)
-    
-    return all_preds, all_probs, all_inputs
-
-def main():
-    logger = setup_logging()
-    
-    # 配置参数
-    input_length = 8  # 输入序列长度
-    batch_size = 32
+def main(data_file):
+    # 配置
+    input_length = 8
     model_path = 'models/ts_mixer.onnx'
-    data_dir = 'data/test_data'  # 预测数据目录
-    output_dir = 'predictions'
-    
-    logger.info('开始预测:')
-    logger.info(f'输入序列长度={input_length}, 批大小={batch_size}')
-    
-    # 创建输出目录
-    os.makedirs(output_dir, exist_ok=True)
+      # 单个输入文件
     
     # 加载模型
     session = load_onnx_model(model_path)
-    logger.info(f'已加载ONNX模型: {model_path}')
     
-    # 准备数据
-    predict_dataset = VortexDataset(data_dir, input_length=input_length)
-    predict_loader = DataLoader(predict_dataset, batch_size=batch_size, shuffle=False)
+    # 加载单个文件
+    df = pd.read_csv(data_file, sep='\s+', header=0)
     
-    logger.info(f'预测样本数: {len(predict_dataset)}')
+    # 获取特征列（与 VortexDataset 一致）
+    feature_cols = [col for col in df.columns if col not in ['Track', 'Year', 'Month', 'Day', 'Label']][8:-200]
+    if len(feature_cols) != 284:
+        raise ValueError(f"预期 284 个特征列，实际得到 {len(feature_cols)} 个")
     
-    # 执行预测
-    predictions, probabilities, inputs = predict_batch(session, predict_loader)
+    # 提取特征
+    features = df[feature_cols].values  # 形状: (n_rows, 284)
+    features = np.nan_to_num(features, nan=np.nanmean(features, axis=0))
     
-    # 保存预测结果
-    feature_cols = [f'Val{i}_{j}' for i in range(5, 123) for j in range(1, 3)]
-    input_cols = [f'{col}_t{t+1}' for t in range(input_length) for col in feature_cols]
+    # 确保文件有足够的行数
+    if len(features) < input_length:
+        raise ValueError(f"文件 {data_file} 的行数少于 {input_length}")
     
-    output_data = []
-    for i in range(len(predictions)):
-        input_flat = inputs[i].reshape(-1)
-        row = {
-            **{col: input_flat[j] for j, col in enumerate(input_cols) if j < len(input_flat)},
-            'prediction': int(predictions[i]),
-            'probability': float(probabilities[i])
-        }
-        output_data.append(row)
+    # 取最后 input_length 行进行预测
+    input_data = features[-input_length:]  # 形状: (input_length, 284)
     
-    output_df = pd.DataFrame(output_data)
-    output_path = os.path.join(output_dir, 'predictions1.csv')
-    output_df.to_csv(output_path, index=False)
-    logger.info(f'已保存预测结果到 {output_path}')
+    # 转换为 torch 张量
+    input_tensor = torch.tensor(input_data, dtype=torch.float32)
     
-    # 统计预测结果
-    positive_count = sum(predictions)
-    logger.info(f'预测结果统计: 正例={positive_count}, 负例={len(predictions)-positive_count}')
+    # 预测
+    prediction, probability = predict_single(session, input_tensor)
     
-    return predictions
+    # 打印结果
+    print(f"预测结果: {prediction}")
 
 if __name__ == '__main__':
-    main()
+    data_file = 'data/test_data/file_10.txt'
+    print('已处理文件: ',data_file)
+    main(data_file)
