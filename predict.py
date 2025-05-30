@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 import onnxruntime as ort
-from dataset import VortexDataset
+import glob
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -38,32 +38,153 @@ def predict_single(session, input_data):
     
     return prediction[0], probs[0]
 
-def main(data_file):
-    # 配置
-    input_length = 8
-    model_path = 'models/ts_mixer.onnx'
-      # 单个输入文件
+def process_itp_file(input_file_path):
+    """
+    处理单个ITP数据文件。
+    按站点和日期分组，连接温度和盐度为序列。
+    返回处理后的数据作为 DataFrame。
+    """
+    try:
+        # 读取数据
+        df = pd.read_csv(input_file_path, delim_whitespace=True, header=0,
+                         names=['station', 'year', 'month', 'day', 'lon', 'lat', 'depth', 'temperature', 'salinity'],
+                         na_values=['NaN', 'nan'])
+
+        # 转换为数值
+        for col in ['lon', 'lat', 'depth', 'temperature', 'salinity']:
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+
+        # 按元数据分组
+        df['station'] = df['station'].astype(str)
+        grouped = df.groupby(['station', 'year', 'month', 'day', 'lon', 'lat'])
+
+        # 处理数据
+        processed_rows = []
+        for name, group in grouped:
+            group = group.sort_values(by='depth')
+            tem_sal_sequence = []
+            for _, row in group.iterrows():
+                temp_val = row['temperature'] if pd.notna(row['temperature']) else np.nan
+                sal_val = row['salinity'] if pd.notna(row['salinity']) else np.nan
+                tem_sal_sequence.extend([temp_val, sal_val])
+            
+            # 构造行
+            row = [name[0], name[1], name[2], name[3], name[4], name[5]] + tem_sal_sequence
+            processed_rows.append(row)
+
+        # 创建 DataFrame
+        max_cols = max(len(row) for row in processed_rows)
+        columns = ['Track', 'Year', 'Month', 'Day', 'Lon', 'Lat'] + \
+                  [f'depth{i}_{j}' for i in range(6, (max_cols-6)//2 + 6) for j in [1, 2]]
+        df = pd.DataFrame(processed_rows, columns=columns[:len(processed_rows[0])])
+        
+        return df
+
+    except FileNotFoundError:
+        print(f"错误: 输入文件 {input_file_path} 不存在")
+        raise
+    except pd.errors.EmptyDataError:
+        print(f"错误: 输入文件 {input_file_path} 为空或格式不正确")
+        raise
+    except Exception as e:
+        print(f"处理 {input_file_path} 时发生错误: {e}")
+        raise
+
+def process_inter1(df):
+    """
+    第一次插值处理，基于 batch_inter1.py。
+    对数值列进行线性插值。
+    """
+    # 将数值列转换为浮点型
+    for col in df.columns[4:]:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
     
+    # 按列进行线性插值
+    for col in df.columns[6:]:  # 从 depth6_1 开始
+        df[col] = df[col].interpolate(method='linear', limit_direction='both')
+    
+    return df
+
+def process_inter2(df):
+    """
+    第二次插值处理，基于 batch_inter2.py。
+    补齐列数到 496，进行插值，选择 Lon, Lat, depth10_1 到 depth150_2。
+    """
+    # 确定当前列数
+    num_cols = len(df.columns)
+    
+    # 如果列数少于 496，补齐到 496
+    if num_cols < 496:
+        num_pairs = (num_cols - 6) // 2
+        additional_pairs = (496 - num_cols) // 2
+        new_columns = [f'depth{i}_{j}' for i in range(num_pairs + 6, num_pairs + additional_pairs + 6) for j in [1, 2]]
+        for col in new_columns:
+            df[col] = np.nan
+        num_cols = 496
+    
+    # 转换为浮点型
+    for col in df.columns[4:]:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+    
+    # 线性插值
+    for col in df.columns[6:]:
+        df[col] = df[col].interpolate(method='linear', limit_direction='both')
+    
+    # 填充剩余 NaN
+    for col in df.columns[6:]:
+        if df[col].isna().all():
+            df.fillna({col: 0}, inplace=True)
+        else:
+            df[col].fillna(method='ffill', inplace=True)
+            df[col].fillna(method='bfill', inplace=True)
+    
+    # 选择指定列
+    columns_to_keep = ['Track', 'Year', 'Month', 'Day', 'Lon', 'Lat'] + \
+                      [f'depth{i}_{j}' for i in range(10, 151) for j in [1, 2]]
+    df = df[columns_to_keep]
+    
+    return df
+
+def main(input_length, model_path, data_dir):
+    """
+    主函数，处理多个输入文件并进行预测
+    """
     # 加载模型
     session = load_onnx_model(model_path)
     
-    # 加载单个文件
-    df = pd.read_csv(data_file, sep='\s+', header=0)
+    # 获取所有输入文件
+    file_list = glob.glob(os.path.join(data_dir, '*.csv'))
+    if not file_list:
+        raise ValueError(f"目录 {data_dir} 中未找到任何 .csv 文件")
     
-    # 获取特征列（与 VortexDataset 一致）
-    feature_cols = [col for col in df.columns if col not in ['Track', 'Year', 'Month', 'Day', 'Label']][8:-200]
-    if len(feature_cols) != 284:
-        raise ValueError(f"预期 284 个特征列，实际得到 {len(feature_cols)} 个")
+    # 处理所有文件，合并数据
+    all_dfs = []
+    for file_path in file_list:
+        df = process_itp_file(file_path)
+        df = process_inter1(df)
+        df = process_inter2(df)
+        all_dfs.append(df)
+    
+    # 合并所有 DataFrame，按 Year, Month, Day 排序以确保时间顺序
+    combined_df = pd.concat(all_dfs, ignore_index=True)
+    combined_df[['Year', 'Month', 'Day']] = combined_df[['Year', 'Month', 'Day']].astype(int)
+    combined_df = combined_df.sort_values(by=['Track']).reset_index(drop=True)
     
     # 提取特征
-    features = df[feature_cols].values  # 形状: (n_rows, 284)
+    feature_cols = ['Lon', 'Lat'] + [f'depth{i}_{j}' for i in range(10, 151) for j in [1, 2]]
+    features = combined_df[feature_cols].values
     features = np.nan_to_num(features, nan=np.nanmean(features, axis=0))
     
-    # 确保文件有足够的行数
+    # 确保有足够的行数
     if len(features) < input_length:
-        raise ValueError(f"文件 {data_file} 的行数少于 {input_length}")
+        raise ValueError(f"合并后的数据行数不足，预期至少 {input_length} 行，实际 {len(features)}")
     
-    # 取最后 input_length 行进行预测
+    # 确保特征数量正确
+    expected_features = 284  # Lon, Lat + 141 depths * 2
+    if features.shape[1] != expected_features:
+        raise ValueError(f"特征数量错误，预期 {expected_features} 列，实际 {features.shape[1]} 列")
+    
+    # 取最后 input_length 行作为输入
     input_data = features[-input_length:]  # 形状: (input_length, 284)
     
     # 转换为 torch 张量
@@ -73,9 +194,12 @@ def main(data_file):
     prediction, probability = predict_single(session, input_tensor)
     
     # 打印结果
-    print(f"预测结果: {prediction}")
+    print(f"预测结果: {prediction}, 概率: {probability}")
 
 if __name__ == '__main__':
-    data_file = 'data/test_data/file_10.txt'
-    print('已处理文件: ',data_file)
-    main(data_file)
+    # 配置参数
+    input_length = 8
+    model_path = 'models/ts_mixer.onnx'
+    data_dir = 'data/test_data/sample_4'
+    
+    main(input_length, model_path, data_dir)
