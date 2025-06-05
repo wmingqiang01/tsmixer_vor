@@ -90,60 +90,7 @@ def process_itp_file(input_file_path):
         print(f"处理 {input_file_path} 时发生错误: {e}")
         raise
 
-def process_inter1(df):
-    """
-    第一次插值处理，基于 batch_inter1.py。
-    对数值列进行线性插值。
-    """
-    # 将数值列转换为浮点型
-    for col in df.columns[4:]:
-        df[col] = pd.to_numeric(df[col], errors='coerce')
-    
-    # 按列进行线性插值
-    for col in df.columns[6:]:  # 从 depth6_1 开始
-        df[col] = df[col].interpolate(method='linear', limit_direction='both')
-    
-    return df
 
-def process_inter2(df):
-    """
-    第二次插值处理，基于 batch_inter2.py。
-    补齐列数到 496，进行插值，选择 Lon, Lat, depth10_1 到 depth150_2。
-    """
-    # 确定当前列数
-    num_cols = len(df.columns)
-    
-    # 如果列数少于 496，补齐到 496
-    if num_cols < 496:
-        num_pairs = (num_cols - 6) // 2
-        additional_pairs = (496 - num_cols) // 2
-        new_columns = [f'depth{i}_{j}' for i in range(num_pairs + 6, num_pairs + additional_pairs + 6) for j in [1, 2]]
-        for col in new_columns:
-            df[col] = np.nan
-        num_cols = 496
-    
-    # 转换为浮点型
-    for col in df.columns[4:]:
-        df[col] = pd.to_numeric(df[col], errors='coerce')
-    
-    # 线性插值
-    for col in df.columns[6:]:
-        df[col] = df[col].interpolate(method='linear', limit_direction='both')
-    
-    # 填充剩余 NaN
-    for col in df.columns[6:]:
-        if df[col].isna().all():
-            df.fillna({col: 0}, inplace=True)
-        else:
-            df[col].fillna(method='ffill', inplace=True)
-            df[col].fillna(method='bfill', inplace=True)
-    
-    # 选择指定列
-    columns_to_keep = ['Track', 'Year', 'Month', 'Day', 'Lon', 'Lat'] + \
-                      [f'depth{i}_{j}' for i in range(10, 151) for j in [1, 2]]
-    df = df[columns_to_keep]
-    
-    return df
 
 def main(input_length, model_path, data_dir):
     """
@@ -161,8 +108,8 @@ def main(input_length, model_path, data_dir):
     all_dfs = []
     for file_path in file_list:
         df = process_itp_file(file_path)
-        df = process_inter1(df)
-        df = process_inter2(df)
+        # df = process_inter1(df)  # Removed interpolation
+        # df = process_inter2(df)  # Removed interpolation
         all_dfs.append(df)
     
     # 合并所有 DataFrame，按 Year, Month, Day 排序以确保时间顺序
@@ -200,6 +147,6 @@ if __name__ == '__main__':
     # 配置参数
     input_length = 8
     model_path = 'models/ts_mixer.onnx'
-    data_dir = 'data/test_data/sample_4'
+    data_dir = 'data/test_data/sample_10'
     
     main(input_length, model_path, data_dir)
