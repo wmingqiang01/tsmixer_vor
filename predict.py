@@ -72,7 +72,7 @@ def process_single_file_for_prediction(file_path, input_length):
         print(f"处理文件 {file_path} 时出错: {str(e)}")
         return None, None
 
-def main(model_path, data_path):
+def predict(model_path, data_path):
     onnx_model_path = model_path
     file_to_predict = data_path
     input_length = 24
@@ -110,4 +110,4 @@ def main(model_path, data_path):
 if __name__ == '__main__':
     model_path = "models/ts_mixer_balanced_best.onnx"
     data_path = "test_data/test_data.txt"
-    main(model_path, data_path)
+    predict(model_path, data_path)
