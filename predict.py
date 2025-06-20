@@ -2,7 +2,6 @@ import os
 import numpy as np
 import pandas as pd
 import onnxruntime as ort
-from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -12,20 +11,19 @@ def process_single_file_for_prediction(file_path, input_length):
     try:
         df = pd.read_csv(file_path, delim_whitespace=True, header=0, na_values=['NaN', 'nan'])
         
-        required_cols = ['station', 'year', 'month', 'day', 'lon', 'lat', 'depth', 'temperature', 'salinity', 'Label']
+        required_cols = ['station', 'year', 'month', 'day', 'lon', 'lat', 'depth', 'temperature', 'salinity']
         if not all(col in df.columns for col in required_cols):
             missing_cols = [col for col in required_cols if col not in df.columns]
             print(f"文件 {file_path} 缺少列: {missing_cols}")
-            return None, None, None
+            return None, None
         
-        for col in ['lon', 'lat', 'depth', 'temperature', 'salinity', 'Label']:
+        for col in ['lon', 'lat', 'depth', 'temperature', 'salinity']:
             df[col] = pd.to_numeric(df[col], errors='coerce')
         
         df['station'] = df['station'].astype(str)
-        groups = df.groupby(['station', 'year', 'month', 'day', 'lon', 'lat', 'Label'])
+        groups = df.groupby(['station', 'year', 'month', 'day', 'lon', 'lat'])
         
         features_list = []
-        labels_list = []
         metadata_list = []
         
         depth_range = np.arange(10, 151)
@@ -47,7 +45,6 @@ def process_single_file_for_prediction(file_path, input_length):
             
             feature_vector = np.concatenate([[name[4], name[5]], tem_sal_sequence])
             features_list.append(feature_vector)
-            labels_list.append(name[6])
             metadata_list.append({
                 'station': name[0],
                 'year': name[1],
@@ -58,86 +55,57 @@ def process_single_file_for_prediction(file_path, input_length):
             })
         
         features = np.array(features_list, dtype=np.float32)
-        labels = np.array(labels_list, dtype=np.float32)
         
         if len(features) > input_length:
             x_samples = np.lib.stride_tricks.sliding_window_view(
                 features, (input_length, features.shape[1])
             ).reshape(-1, input_length, features.shape[1])
-            y_samples = labels[input_length-1:-1]
-            
-            if len(x_samples) != len(y_samples):
-                x_samples = x_samples[:-1]
             
             # 处理NaN
             x_samples = np.nan_to_num(x_samples, nan=np.nanmean(x_samples))
             
-            return x_samples, y_samples, metadata_list[input_length-1:-1]
+            return x_samples, metadata_list[input_length-1:]
         
-        return None, None, None
+        return None, None
     
     except Exception as e:
         print(f"处理文件 {file_path} 时出错: {str(e)}")
-        return None, None, None
+        return None, None
 
 def main(model_path, data_path):
     onnx_model_path = model_path
     file_to_predict = data_path
     input_length = 24
 
-    print(f"Loading ONNX model from: {onnx_model_path}")
     try:
         ort_session = ort.InferenceSession(onnx_model_path)
     except Exception as e:
-        print(f"Error loading ONNX model: {e}")
+        print(f"加载 ONNX 模型出错: {e}")
         return
 
-    print(f"\nProcessing data from: {file_to_predict}")
-    X_test, y_true, metadata = process_single_file_for_prediction(file_to_predict, input_length)
+    X_test, metadata = process_single_file_for_prediction(file_to_predict, input_length)
 
     if X_test is None:
-        print("No data produced after processing. Exiting.")
+        print("处理数据后无输出。退出程序。")
         return
 
-    print(f"Data processed successfully. Shape of input for ONNX model: {X_test.shape}")
-
-    # Run inference
+    # 运行推理
     input_name = ort_session.get_inputs()[0].name
     ort_inputs = {input_name: X_test}
     
-    print("\nRunning inference with ONNX Runtime...")
     ort_outs = ort_session.run(None, ort_inputs)
     y_pred_logits = ort_outs[0]
     
-    # Post-process the output
+    # 处理输出
     y_pred_probs = 1 / (1 + np.exp(-y_pred_logits)) # Sigmoid
     y_pred = (y_pred_probs > 0.5).astype(int).flatten()
 
-    # Evaluate the results
-    accuracy = accuracy_score(y_true, y_pred)
-    _, recall, f1, _ = precision_recall_fscore_support(y_true, y_pred, average='binary', zero_division=0)
-    
-    print("\n--- Evaluation Metrics ---")
-    print(f"Accuracy:  {accuracy:.4f}")
-    print(f"Recall:    {recall:.4f}")
-    print(f"F1-score:  {f1:.4f}")
-    print("--------------------------\n")
-
-    # Save predictions to CSV
-    results_df = pd.DataFrame({
-        'true_label': y_true,
-        'predicted_prob': y_pred_probs,
-        'predicted_label': y_pred
-    })
-    
-    # Add metadata
-    for key in metadata[0].keys():
-        results_df[key] = [m[key] for m in metadata]
-    
-    output_file = 'predictions/predictions_onnx.csv'
-    os.makedirs('predictions', exist_ok=True)
-    results_df.to_csv(output_file, index=False)
-    print(f"Predictions saved to: {output_file}")
+    # 直接打印预测结果
+    for i, pred in enumerate(y_pred):
+        meta = metadata[i]
+        print(f"站号: {meta['station']}, 日期：{meta['year']:}: {meta['month']}: {meta['day']}, "
+              f"经度: {meta['lon']:.4f}, 纬度: {meta['lat']:.4f}, 预测标签: {pred}")
+    print("-----------------")
 
 if __name__ == '__main__':
     model_path = "models/ts_mixer_balanced_best.onnx"
