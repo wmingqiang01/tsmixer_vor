@@ -80,9 +80,9 @@ def process_single_file_for_prediction(file_path, input_length):
         print(f"处理文件 {file_path} 时出错: {str(e)}")
         return None, None, None
 
-def main():
-    onnx_model_path = 'models/ts_mixer_balanced_best.onnx'
-    file_to_predict = 'data/test_data/test_data.txt' 
+def main(model_path, data_path):
+    onnx_model_path = model_path
+    file_to_predict = data_path
     input_length = 24
 
     print(f"Loading ONNX model from: {onnx_model_path}")
@@ -115,17 +115,10 @@ def main():
 
     # Evaluate the results
     accuracy = accuracy_score(y_true, y_pred)
-    precision, recall, f1, _ = precision_recall_fscore_support(y_true, y_pred, average='binary', zero_division=0)
-
-    print("\n--- Prediction Results ---")
-    print(f"File: {os.path.basename(file_to_predict)}")
-    print(f"Total samples predicted: {len(y_pred)}")
-    print(f"True positives (Label 1): {y_true.sum()}")
-    print(f"Predicted positives (Label 1): {y_pred.sum()}")
+    _, recall, f1, _ = precision_recall_fscore_support(y_true, y_pred, average='binary', zero_division=0)
     
     print("\n--- Evaluation Metrics ---")
     print(f"Accuracy:  {accuracy:.4f}")
-    print(f"Precision: {precision:.4f}")
     print(f"Recall:    {recall:.4f}")
     print(f"F1-score:  {f1:.4f}")
     print("--------------------------\n")
@@ -147,4 +140,6 @@ def main():
     print(f"Predictions saved to: {output_file}")
 
 if __name__ == '__main__':
-    main()
+    model_path = "models/ts_mixer_balanced_best.onnx"
+    data_path = "test_data/test_data.txt"
+    main(model_path, data_path)
